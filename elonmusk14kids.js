@@ -79,7 +79,7 @@
                     left: 0;
                     width: 100%;
                     height: 50%;
-                    background: #1a1a1a;
+                    background: #111;
                     color: white;
                     z-index: 9999;
                     display: flex;
@@ -163,6 +163,7 @@
                     border: none;
                     border-radius: 0px;
                     font-size: 11px;
+                    outline: none;
                     margin-bottom: 5px;
                 `;
                 const run = document.createElement("button");
