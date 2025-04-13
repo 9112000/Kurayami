@@ -25,7 +25,7 @@ A powerful debugging tool that provides real-time page inspection capabilities w
 
 1. Simply include the script in your page or the javascript in your browser
 ```html
-<script src="https://cdn.jsdelivr.net/gh/starexxx/elonmusk14kids@main/saygex.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/starexxx/elonmusk14kids@main/issue.js"></script>
 ```
 ```js
 // ==UserScript==
