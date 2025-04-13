@@ -41,7 +41,7 @@ A powerful debugging tool that provides real-time page inspection capabilities w
 (function() {
     'use strict';
 
-    javascript:(function(){      var s = document.createElement('script');      s.src = 'https://cdn.jsdelivr.net/gh/starexxx/elonmusk14kids@main/saygex.js';      document.body.appendChild(s);  })();
+    javascript:(function(){      var s = document.createElement('script');      s.src = 'https://cdn.jsdelivr.net/gh/starexxx/elonmusk14kids@main/issue.js';      document.body.appendChild(s);  })();
 })();
 ```
 2. The inspector icon will appear in bottom-right corner
