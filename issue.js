@@ -1,26 +1,33 @@
-
-
-// ==SCRIPT STARTS HERE==
-
 (function() {
-    let isDragging = false, offsetX, offsetY, sourcePanel, copyBtn, startX, currentTab = "Info", tabButtons = [], consoleHistory = [];
-
+    let isDragging = false, offsetX, offsetY, sourcePanel, copyBtn, currentTab = "Info", tabButtons = [];
     if (!document.querySelector("#prismjs")) {
         let prismScript = document.createElement("script");
         prismScript.src = "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js";
         prismScript.id = "prismjs";
         document.head.appendChild(prismScript);
-
         let prismCSS = document.createElement("link");
         prismCSS.rel = "stylesheet";
         prismCSS.href = "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css";
         document.head.appendChild(prismCSS);
-
         let materialIcons = document.createElement("link");
         materialIcons.rel = "stylesheet";
         materialIcons.href = "https://fonts.googleapis.com/icon?family=Material+Icons";
         document.head.appendChild(materialIcons);
+        let interFont = document.createElement("link");
+        interFont.rel = "stylesheet";
+        interFont.href = "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap";
+        document.head.appendChild(interFont);
     }
+
+    let style = document.createElement("style");
+    style.textContent = `
+        * {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+    `;
+    document.head.appendChild(style);
 
     let btn = document.createElement("img");
     btn.src = "https://github.com/starexxx.png";
@@ -36,6 +43,7 @@
         transition: opacity 0.2s ease;
         opacity: 0.7;
         box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        font-family: 'Inter', sans-serif;
     `;
     btn.draggable = false;
 
@@ -97,7 +105,7 @@
                     flex-direction: column;
                     transform: translateY(100%);
                     transition: transform 0.3s ease;
-                    font-family: monospace;
+                    font-family: 'Inter', monospace;
                 `;
                 sourcePanel.classList.add("show");
 
@@ -111,6 +119,7 @@
                     background: #111;
                     border-bottom: none;
                     color: #fff;
+                    font-family: 'Inter', sans-serif;
                 `;
 
                 const navBar = document.createElement("div");
@@ -120,6 +129,7 @@
                     border-bottom: 1px solid #333;
                     justify-content: space-around;
                     font-size: 12px;
+                    font-family: 'Inter', sans-serif;
                 `;
 
                 const tabs = ["Info", "Source", "Console", "Resources"];
@@ -137,6 +147,7 @@
                         cursor: pointer;
                         position: relative;
                         outline: none;
+                        font-family: 'Inter', sans-serif;
                     `;
                     if (tab === currentTab) {
                         btn.style.color = "#fff";
@@ -156,6 +167,7 @@
                     font-size: 11px;
                     background: #1a1a1a;
                     position: relative;
+                    font-family: 'Inter', monospace;
                 `;
 
                 function switchTab(tab, direction) {
@@ -202,11 +214,9 @@
                 pre.appendChild(code);
                 pre.style = `margin:0; padding:0; white-space:pre-wrap; background: transparent !important;`;
                 tabContents = {"Source": pre};
-
                 const jsExec = document.createElement("div");
                 const inputContainer = document.createElement("div");
-                inputContainer.style = `margin-bottom:10px;`;
-                
+                inputContainer.style = `margin-bottom:10px;`;     
                 const input = document.createElement("textarea");
                 input.placeholder = "Javascript Console";
                 input.style = `
@@ -221,7 +231,7 @@
                     outline: none;
                     margin-bottom: -30px;
                     padding: 8px;
-                    font-family: monospace;
+                    font-family: 'Inter', monospace;
                 `;
                 
                 const buttonContainer = document.createElement("div");
@@ -236,10 +246,10 @@
                     border: none;
                     cursor: pointer;
                     text-align: right;
-                    border-radius: 
-0px;
+                    border-radius: 0px;
                     font-size: 12px;
                     flex:1;
+                    font-family: 'Inter', sans-serif;
                 `;
                 
                 const out = document.createElement("div");
@@ -250,7 +260,7 @@
                     background:#111;
                     padding:8px;
                     border-radius:0px;
-                    font-family:monospace;
+                    font-family:'Inter', monospace;
                     max-height:200px;
                     overflow-y:auto;
                 `;
