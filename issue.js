@@ -1,36 +1,4 @@
-/*
- * Starexx Page Inspector - v1.3
- * 
- * A comprehensive debugging tool that provides:
- * 
- * 1. Page Source Viewer:
- *    - Syntax-highlighted HTML source
- *    - One-click copy functionality
- * 
- * 2. Interactive Console:
- *    - Real-time JavaScript execution
- *    - Captures all console.log/warn/error outputs
- *    - Command history preservation
- * 
- * 3. Resource Explorer:
- *    - Lists all external scripts, stylesheets, images
- *    - Direct clickable links with image previews
- *    - Iframe detection
- * 
- * 4. System Information:
- *    - Organized device/browser metrics
- *    - Network connection details
- *    - Page load statistics
- * 
- * UI Features:
- * - Draggable launch button
- * - Tabbed interface with iOS-style navigation
- * - Swipe gestures for tab switching
- * - Responsive design for all screen sizes
- * 
- * Note: Designed for developer use with clean, intuitive interface
- * that won't interfere with host page styling.
- */
+
 
 // ==SCRIPT STARTS HERE==
 
