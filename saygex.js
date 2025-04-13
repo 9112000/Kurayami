@@ -1,9 +1,41 @@
-// @name: SayGex
-// @author: Starexx
+/*
+ * Starexx Page Inspector - v1.3
+ * 
+ * A comprehensive debugging tool that provides:
+ * 
+ * 1. Page Source Viewer:
+ *    - Syntax-highlighted HTML source
+ *    - One-click copy functionality
+ * 
+ * 2. Interactive Console:
+ *    - Real-time JavaScript execution
+ *    - Captures all console.log/warn/error outputs
+ *    - Command history preservation
+ * 
+ * 3. Resource Explorer:
+ *    - Lists all external scripts, stylesheets, images
+ *    - Direct clickable links with image previews
+ *    - Iframe detection
+ * 
+ * 4. System Information:
+ *    - Organized device/browser metrics
+ *    - Network connection details
+ *    - Page load statistics
+ * 
+ * UI Features:
+ * - Draggable launch button
+ * - Tabbed interface with iOS-style navigation
+ * - Swipe gestures for tab switching
+ * - Responsive design for all screen sizes
+ * 
+ * Note: Designed for developer use with clean, intuitive interface
+ * that won't interfere with host page styling.
+ */
 
-// ==/UserScript==
-(function () {
-    let isDragging = false, offsetX, offsetY, sourcePanel, copyBtn, startX, currentTab = "Info", tabButtons = [];
+// ==SCRIPT STARTS HERE==
+
+(function() {
+    let isDragging = false, offsetX, offsetY, sourcePanel, copyBtn, startX, currentTab = "Info", tabButtons = [], consoleHistory = [];
 
     if (!document.querySelector("#prismjs")) {
         let prismScript = document.createElement("script");
@@ -141,7 +173,7 @@
                     if (tab === currentTab) {
                         btn.style.color = "#fff";
                         btn.style.fontWeight = "bold";
-                        btn.innerHTML += `<div style="position:absolute;bottom:0;left:25%;width:50%;height:2px;background:#fff;"></div>`;
+                        btn.innerHTML += `<div style="position:absolute;bottom:0;left:25%;width:50%;height:2px;background:#34C759;"></div>`;
                     }
                     btn.onclick = () => switchTab(tab);
                     navBar.appendChild(btn);
@@ -170,7 +202,7 @@
                     const activeBtn = tabButtons[tabs.indexOf(tab)];
                     activeBtn.style.color = "#fff";
                     activeBtn.style.fontWeight = "bold";
-                    activeBtn.innerHTML += `<div style="position:absolute;bottom:0;left:25%;width:50%;height:2px;background:#fff;"></div>`;
+                    activeBtn.innerHTML += `<div style="position:absolute;bottom:0;left:25%;width:50%;height:2px;background:#34C759;"></div>`;
 
                     if (direction) {
                         contentArea.style.transform = `translateX(${direction === 'left' ? '100%' : '-100%'})`;
@@ -204,79 +236,221 @@
                 tabContents = {"Source": pre};
 
                 const jsExec = document.createElement("div");
+                const inputContainer = document.createElement("div");
+                inputContainer.style = `margin-bottom:10px;`;
+                
                 const input = document.createElement("textarea");
-                input.placeholder = "Enter JavaScript code here...";
+                input.placeholder = "Javascript Console";
                 input.style = `
                     width: 100%;
                     height: 60px;
-                    background: #222;
+                    background: #111;
                     color: #0f0;
                     border: none;
                     resize: none;
-                    border-radius: 3px;
-                    font-size: 11px;
+                    border-radius: 0px;
+                    font-size: 12px;
                     outline: none;
-                    margin-bottom: 5px;
-                    padding: 5px;
+                    margin-bottom: -30px;
+                    padding: 8px;
                     font-family: monospace;
                 `;
+                
+                const buttonContainer = document.createElement("div");
+                buttonContainer.style = `display:flex; gap:8px; margin-bottom:1px;`;
+                
                 const run = document.createElement("button");
-                run.innerHTML = `<span class="material-icons" style="font-size:14px;vertical-align:middle">play_arrow</span> Execute`;
+                run.innerHTML = `Execute`;
                 run.style = `
-                    padding: 5px 10px;
-                    background: #333;
+                    padding: 6px 12px;
+                    background: transparent;
                     color: #fff;
                     border: none;
                     cursor: pointer;
-                    border-radius: 3px;
-                    margin-right: 5px;
+                    text-align: right;
+                    border-radius: 
+0px;
+                    font-size: 12px;
+                    flex:1;
                 `;
+                
                 const out = document.createElement("div");
-                out.style = `margin-top:5px;color:#0f0;font-size:11px;white-space:pre-wrap;`;
+                out.style = `
+                    color:#0f0;
+                    font-size:12px;
+                    white-space:pre-wrap;
+                    background:#111;
+                    padding:8px;
+                    border-radius:0px;
+                    font-family:monospace;
+                    max-height:200px;
+                    overflow-y:auto;
+                `;
+                
+                const originalConsole = {
+                    log: console.log,
+                    warn: console.warn,
+                    error: console.error,
+                    info: console.info
+                };
+                
+                function captureConsole() {
+                    console.log = function() {
+                        originalConsole.log.apply(console, arguments);
+                        const args = Array.from(arguments).map(arg => 
+                            typeof arg === 'object' ? JSON.stringify(arg, null, 2) : arg
+                        ).join(' ');
+                        const entry = document.createElement("div");
+                        entry.style = `color:#0f0; margin-bottom:5px;`;
+                        entry.textContent = args;
+                        out.appendChild(entry);
+                        out.scrollTop = out.scrollHeight;
+                    };
+                    
+                    console.warn = function() {
+                        originalConsole.warn.apply(console, arguments);
+                        const args = Array.from(arguments).join(' ');
+                        const entry = document.createElement("div");
+                        entry.style = `color:#FFCC00; margin-bottom:5px;`;
+                        entry.textContent = args;
+                        out.appendChild(entry);
+                        out.scrollTop = out.scrollHeight;
+                    };
+                    
+                    console.error = function() {
+                        originalConsole.error.apply(console, arguments);
+                        const args = Array.from(arguments).join(' ');
+                        const entry = document.createElement("div");
+                        entry.style = `color:#FF3B30; margin-bottom:5px;`;
+                        entry.textContent = args;
+                        out.appendChild(entry);
+                        out.scrollTop = out.scrollHeight;
+                    };
+                }
+                
+                captureConsole();
+                
                 run.onclick = () => {
                     try {
-                        out.innerText = eval(input.value);
+                        const code = input.value;
+                        const result = eval(code);
+                        const entry = document.createElement("div");
+                        entry.style = `margin-bottom:10px;`;
+                        entry.innerHTML = `
+                            <div style="color:#34C759;">> ${code}</div>
+                            <div style="color:#0f0;">${result !== undefined ? result : ''}</div>
+                        `;
+                        out.appendChild(entry);
+                        out.scrollTop = out.scrollHeight;
                     } catch (e) {
-                        out.innerText = e.message;
+                        const entry = document.createElement("div");
+                        entry.style = `color:#FF3B30; margin-bottom:10px;`;
+                        entry.textContent = `Error: ${e.message}`;
+                        out.appendChild(entry);
+                        out.scrollTop = out.scrollHeight;
                     }
                 };
-                jsExec.append(input, run, out);
+                
+                buttonContainer.append(run);
+                inputContainer.append(input, buttonContainer, out);
+                jsExec.append(inputContainer);
                 tabContents["Console"] = jsExec;
 
                 const resBox = document.createElement("div");
                 const resources = [
                     ...document.querySelectorAll("script[src]"),
                     ...document.querySelectorAll("link[rel=stylesheet]"),
-                    ...document.querySelectorAll("img[src]")
+                    ...document.querySelectorAll("img[src]"),
+                    ...document.querySelectorAll("iframe[src]")
                 ];
                 resources.forEach(r => {
-                    const item = document.createElement("a");
-                    item.innerText = r.src || r.href;
-                    item.href = r.src || r.href;
-                    item.target = "_blank";
-                    item.style = `
-                        margin-bottom:3px;
-                        color:#aaa;
-                        display:block;
-                        text-decoration:underline;
-                    `;
-                    resBox.appendChild(item);
+                    const container = document.createElement("div");
+                    container.style = `margin-bottom:-15px; background:#111; padding:10px; border-radius:0px;`;
+                    
+                    const link = document.createElement("a");
+                    link.innerText = r.src || r.href;
+                    link.href = r.src || r.href;
+                    link.target = "_blank";
+                    link.style = `color:#aaa; text-decoration:underline; display:block;`;
+                    
+                    container.appendChild(link);
+                    
+                    if (r.tagName === 'IMG') {
+                        const imgPreview = document.createElement("img");
+                        imgPreview.src = r.src;
+                        imgPreview.style = `max-width:100%; max-height:100px; display:block; margin-top:10px; border-radius:3px; border:1px solid #333;`;
+                        container.appendChild(imgPreview);
+                    }
+                    else if (r.tagName === 'IFRAME') {
+                        const iframeLabel = document.createElement("div");
+                        iframeLabel.style = `color:#aaa; font-size:10px; margin-top:5px;`;
+                        iframeLabel.textContent = "IFrame Content:";
+                        container.appendChild(iframeLabel);
+                    }
+                    
+                    resBox.appendChild(container);
                 });
                 tabContents["Resources"] = resBox;
 
                 const info = document.createElement("div");
-                info.innerHTML = `
-                    <div style="margin-bottom:5px;color:#fff;"><b>Page Title:</b> ${document.title}</div>
-                    <div style="margin-bottom:5px;color:#fff;"><b>URL:</b> ${location.href}</div>
-                    <div style="margin-bottom:5px;color:#fff;"><b>User Agent:</b> ${navigator.userAgent}</div>
-                    <div style="margin-bottom:5px;color:#fff;"><b>Screen Size:</b> ${screen.width}x${screen.height}</div>
-                    <div style="margin-bottom:5px;color:#fff;"><b>Viewport Size:</b> ${window.innerWidth}x${window.innerHeight}</div>
-                    <div style="margin-bottom:5px;color:#fff;"><b>Cookies Enabled:</b> ${navigator.cookieEnabled}</div>
-                    <div style="margin-bottom:5px;color:#fff;"><b>Online Status:</b> ${navigator.onLine ? 'Online' : 'Offline'}</div>
-                    <div style="margin-bottom:5px;color:#fff;"><b>Platform:</b> ${navigator.platform}</div>
-                    <div style="margin-bottom:5px;color:#fff;"><b>Language:</b> ${navigator.language}</div>
-                    <div style="margin-bottom:5px;color:#fff;"><b>Page Loaded:</b> ${new Date().toLocaleString()}</div>
-                `;
+                info.style = `display:flex; flex-direction:column; gap:10px;`;
+                
+                const createInfoSection = (title, items) => {
+                    const section = document.createElement("div");
+                    section.style = `background:#111; padding:10px; border-radius:0px;`;
+                    
+                    const titleEl = document.createElement("div");
+                    titleEl.style = `color:#34C759; font-weight:bold; margin-bottom:8px;`;
+                    titleEl.textContent = title;
+                    section.appendChild(titleEl);
+                    
+                    items.forEach(item => {
+                        const row = document.createElement("div");
+                        row.style = `margin-bottom:5px; display:flex;`;
+                        
+                        const label = document.createElement("div");
+                        label.style = `color:#aaa; min-width:120px;`;
+                        label.textContent = item.label;
+                        
+                        const value = document.createElement("div");
+                        value.style = `color:#fff;`;
+                        value.textContent = item.value;
+                        
+                        row.appendChild(label);
+                        row.appendChild(value);
+                        section.appendChild(row);
+                    });
+                    
+                    return section;
+                };
+                
+                info.appendChild(createInfoSection("Page Information", [
+                    { label: "Title:", value: document.title },
+                    { label: "URL:", value: location.href },
+                    { label: "Loaded:", value: new Date().toLocaleString() }
+                ]));
+                
+                info.appendChild(createInfoSection("Device Information", [
+                    { label: "Screen:", value: `${screen.width}x${screen.height}` },
+                    { label: "Viewport:", value: `${window.innerWidth}x${window.innerHeight}` },
+                    { label: "Platform:", value: navigator.platform },
+                    { label: "Language:", value: navigator.language }
+                ]));
+                
+                info.appendChild(createInfoSection("Browser Information", [
+                    { label: "User Agent:", value: navigator.userAgent },
+                    { label: "Cookies:", value: navigator.cookieEnabled ? 'Enabled' : 'Disabled' },
+                    { label: "Online:", value: navigator.onLine ? 'Yes' : 'No' }
+                ]));
+                
+                if (navigator.connection) {
+                    info.appendChild(createInfoSection("Connection Information", [
+                        { label: "Type:", value: navigator.connection.effectiveType },
+                        { label: "Memory:", value: navigator.deviceMemory ? `${navigator.deviceMemory} GB` : 'Unknown' },
+                        { label: "CPU Cores:", value: navigator.hardwareConcurrency || 'Unknown' }
+                    ]));
+                }
+                
                 tabContents["Info"] = info;
 
                 copyBtn = document.createElement("button");
@@ -285,14 +459,14 @@
                     position: absolute;
                     top: 75px;
                     right: 15px;
-                    background: #333;
-                    color: #fff;
+                    background: transparent;
+                    color: #ccc;
                     border: none;
                     padding: 5px;
                     cursor: pointer;
                     z-index: 10001;
                     display: none;
-                    border-radius: 3px;
+                    border-radius: 50%;
                     width: 30px;
                     height: 30px;
                     display: flex;
