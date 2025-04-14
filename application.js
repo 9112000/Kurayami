@@ -31,7 +31,7 @@
     document.head.appendChild(style);
 
     let btn = document.createElement("img");
-    btn.src = "https://github.com/starexxx.png";
+    btn.src = "https://raw.githubusercontent.com/starexxx/Kurayami/7b2b2c3f1aee1517d5ab6c22e01b09fabb70b4fd/Icon/icon.jpg";
     btn.style = `
         position: fixed;
         bottom: 20px;
