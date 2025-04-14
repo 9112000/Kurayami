@@ -1,4 +1,4 @@
-# Starexx Page Inspector
+# Kurayami Miryoku 
 
 A powerful debugging tool that provides real-time page inspection capabilities with a clean, intuitive interface.
 
@@ -25,7 +25,7 @@ A powerful debugging tool that provides real-time page inspection capabilities w
 
 1. Simply include the script in your page or the javascript in your browser
 ```html
-<script src="https://cdn.jsdelivr.net/gh/starexxx/elonmusk14kids@main/15th.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/starexxx/Kurayami@main/application.js"></script>
 ```
 ```js
 // ==UserScript==
@@ -41,7 +41,7 @@ A powerful debugging tool that provides real-time page inspection capabilities w
 (function() {
     'use strict';
 
-    javascript:(function(){      var s = document.createElement('script');      s.src = 'https://cdn.jsdelivr.net/gh/starexxx/elonmusk14kids@main/15th.js';      document.body.appendChild(s);  })();
+    javascript:(function(){      var s = document.createElement('script');      s.src = 'https://cdn.jsdelivr.net/gh/starexxx/Kurayami@main/application.js';      document.body.appendChild(s);  })();
 })();
 ```
 2. The inspector icon will appear in bottom-right corner
