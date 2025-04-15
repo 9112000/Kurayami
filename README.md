@@ -1,68 +1,42 @@
-# Kurayami Miryoku 
 
-A powerful debugging tool that provides real-time page inspection capabilities with a clean, intuitive interface.
+<p align="center">
+  <img src="https://github.com/starexxx/Kurayami/blob/842cdfeb5ac4f66ec7e8c4fc466f9f749c40ac8d/Icon/main.jpg" width="200" style="border-radius:30%;border:3px solid #2d2d2d">
+  <h1 align="center">Kurayami Miryoku</h1>
+  <p align="center"><b>Simple Element Inspector for Mobile Browser</b></p>
+</p>
 
 ## Features
+- **Page Inspection**: View HTML source with syntax highlighting
+- **Resource Analysis**: List all external scripts, styles, and images
+- **Interactive Console**: Execute JavaScript in page context
+- **Mobile Optimized**: Works smoothly on touch devices
 
-### Comprehensive Inspection
-- View syntax-highlighted page source with Prism.js
-- One-click copy entire HTML
-- Analyze all external resources (scripts, styles, images)
-
-### Interactive Console
-- Execute JavaScript in page context
-- Captures all `console.log()`, `.warn()`, `.error()` output
-- Preserves command history between sessions
-- Color-coded output (standard/warning/error)
-
-### Intuitive UI
-- Draggable launch button
-- iOS-style tab navigation
-- Swipe gestures for tab switching
-- Responsive design
-
-## Installation
-
-1. Simply include the script in your page or the javascript in your browser
+## Quick Install
+Add this to your webpage:
 ```html
 <script src="https://cdn.jsdelivr.net/gh/starexxx/Kurayami@main/application.js"></script>
 ```
-```js
-// ==UserScript==
-// @name         Kurayami Miryoku
-// @version      1.3
-// @description  Simple Page Inspector!
-// @author       Starexx
-// @run-at       document-end
-// @match        https://*/*
-// @grant        none
-// ==/UserScript==
 
-(function() {
-    'use strict';
-
-    javascript:(function(){      var s = document.createElement('script');      s.src = 'https://cdn.jsdelivr.net/gh/starexxx/Kurayami@main/application.js';      document.body.appendChild(s);  })();
-})();
+Or use as bookmarklet:
+```javascript
+javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/starexxx/Kurayami@main/application.js';document.body.appendChild(s);})();
 ```
-2. The inspector icon will appear in bottom-right corner
 
-## Usage
-
-- Click icon to open inspector
-- Switch between tabs: Info, Source, Console, Resources
-- Console tab:
-  - Enter JS code in textarea
-  - Press Execute to run
-  - All outputs appear below
-- Resources tab:
-  - Click any URL to open
-  - Images show preview thumbnails
+## How to Use
+1. Click the floating button (bottom-right corner)
+2. Navigate between tabs:
+   - **Info**: Page metadata
+   - **Source**: Formatted HTML
+   - **Console**: JavaScript execution
+   - **Resources**: External files list
+3. In Console tab:
+   - Type JavaScript code
+   - Press "Execute" to run
+   - View color-coded output below
 
 ## Compatibility
+✔ Chrome, Firefox, Safari, Edge  
+✔ iOS & Android  
+✔ 15KB lightweight
 
-- Modern browsers (Chrome, Firefox, Safari, Edge)
-- Mobile-friendly (tested on iOS/Android)
-- Lightweight (~15KB minified)
-- 
-## License
-[MIT License](LICENSE)- Free for personal and commercial use
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
