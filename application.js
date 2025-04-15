@@ -42,7 +42,7 @@
         border-radius: 30%;
         z-index: 10000;
         transition: opacity 0.2s ease;
-        opacity: 0.7;
+        opacity: 0.3;
         box-shadow: none;
         font-family: 'Inter', sans-serif;
     `;
