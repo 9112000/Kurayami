@@ -1,15 +1,9 @@
-
 <p align="center">
   <img src="https://raw.githubusercontent.com/starexxx/Kurayami/c98649fbb89c2e00cb8532d8c45c4b5abeed7cb6/Icon/main.png" width="220" style="border-radius:30%;border:3px solid #2d2d2d">
-  <h2 align="center">Kurayami Miryoku</h2>
-  <p align="center">Simple Element Inspector for Mobile Browser</p>
 </p>
+<p align="center"><b>Kurayami Miryoku</b></p>
 
-### Features
-- **Page Inspection**: View HTML source with syntax highlighting
-- **Resource Analysis**: List all external scripts, styles, and images
-- **Interactive Console**: Execute JavaScript in page context
-- **Mobile Optimized**: Works smoothly on touch devices
+Features include page inspection with clean HTML source viewing and syntax highlighting, detailed resource analysis showing all external scripts, styles, and images, an interactive console to run JavaScript directly in the page context, and full mobile optimisation for smooth performance on touch devices.
 
 ### Installation
 Add this to your webpage:
