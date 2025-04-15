@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kurayami Miryoku</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    :root {
+      --lime: #32cd32;
+      --bg-light: #ffffff;
+      --card-light: #f8f9fa;
+      --text-light: #2d3748;
+      --border-light: #e2e8f0;
+      --code-bg-light: #f5f5f5;
+      --feature-bg-light: #f5f5f5;
+      --feature-text-light: #4a5568;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: all 0.3s ease;
+      line-height: 1.6;
+      -webkit-tap-highlight-color: transparent
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+
+    .main-icon {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      background: transparent;
+      border-radius: 34px;
+      border: none;
+      box-shadow: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-top: 3px;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .card {
+      background-color: transparent;
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-light);
+      box-shadow: none;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h2 .material-icons {
+      font-size: 1.4rem;
+    }
+
+    code {
+      display: block;
+      background-color: transparent;
+      color: var(--text-light);
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 15px;
+      overflow-x: auto;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      border: 1px solid #e2e8f0;
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--lime);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: var(--lime-dark);
+      text-decoration: underline;
+    }
+
+    ol, ul {
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 2rem;
+      color: #718096;
+      font-size: 0.7rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .feature-item {
+      border: 1px solid #e2e8f0;
+      border-radius: 15px;
+      padding: 1rem;
+    }
+
+    .feature-item h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feature-item p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--feature-text-light);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="main-icon" src="https://raw.githubusercontent.com/starexxx/Kurayami/c98649fbb89c2e00cb8532d8c45c4b5abeed7cb6/Icon/main.png" alt="Kurayami Icon">
+    <h1>Kurayami Miryoku</h1>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Features</h2>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <h3>Page Inspection</h3>
+          <p>Clean HTML source viewing with syntax highlighting</p>
+        </div>
+        <div class="feature-item">
+          <h3>Resource Analysis</h3>
+          <p>Detailed view of all external scripts, styles, and images</p>
+        </div>
+        <div class="feature-item">
+          <h3>Interactive Console</h3>
+          <p>Run JavaScript directly in the page context</p>
+        </div>
+        <div class="feature-item">
+          <h3>Mobile Optimized</h3>
+          <p>Smooth performance on touch devices</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Installation</h2>
+      <p>Add this to your webpage:</p>
+      <code>&lt;script src="https://cdn.jsdelivr.net/gh/starexxx/Kurayami@main/start.js"&gt;&lt;/script&gt;</code>
+
+      <p>Or use as bookmarklet:</p>
+      <code>javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/starexxx/Kurayami@main/start.js';document.body.appendChild(s);})();</code>
+    </section>
+
+    <section class="card">
+      <h2>How to Use</h2>
+      <ol>
+        <li>Click the floating button (bottom-right corner)</li>
+        <li>Navigate between tabs:
+          <ul>
+            <li><b>Info:</b> Page metadata</li>
+            <li><b>Source:</b> Formatted HTML</li>
+            <li><b>Console:</b> JavaScript execution</li>
+            <li><b>Resources:</b> External files list</li>
+          </ul>
+        </li>
+        <li>In Console tab:
+          <ul>
+            <li>Type JavaScript code</li>
+            <li>Press "Execute" to run</li>
+            <li>View color-coded output below</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Compatibility</h2>
+      <p>Works across all modern browsers and devices:</p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+        <b>Chrome<br>
+        Firefox<br>
+        Safari<br>
+        Edge<br>
+        iOS<br>
+        Android<br></b>
+      </div>
+    </section>
+  <footer>
+    <p>
+      Kurayami Miryoku &copy; 2025 
+      <a href="https://github.com/starexxx/Kurayami" target="_blank">View on GitHub</a>
+      MIT Licensed
+    </p>
+  </footer>
+</body>
+             </html>
