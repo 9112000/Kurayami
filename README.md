@@ -8,12 +8,12 @@ Features include page inspection with clean HTML source viewing and syntax highl
 ### Installation
 Add this to your webpage:
 ```html
-<script src="https://cdn.jsdelivr.net/gh/starexxx/Kurayami@main/application.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/starexxx/Kurayami@main/start.js"></script>
 ```
 
 Or use as bookmarklet:
 ```javascript
-javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/starexxx/Kurayami@main/application.js';document.body.appendChild(s);})();
+javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/starexxx/Kurayami@main/start.js';document.body.appendChild(s);})();
 ```
 
 ### How to Use
@@ -35,6 +35,6 @@ javascript:(function(){var s=document.createElement('script');s.src='https://cdn
 
 <p align="center">
   <a href="LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License">
+    <img src="https://img.shields.io/badge/license-MIT-pink.svg" alt="MIT License">
   </a>
 </p>
