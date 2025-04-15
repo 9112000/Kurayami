@@ -1,8 +1,8 @@
 
 <p align="center">
-  <img src="https://github.com/starexxx/Kurayami/blob/842cdfeb5ac4f66ec7e8c4fc466f9f749c40ac8d/Icon/main.jpg" width="200" style="border-radius:30%;border:3px solid #2d2d2d">
-  <h1 align="center">Kurayami Miryoku</h1>
-  <p align="center"><b>Simple Element Inspector for Mobile Browser</b></p>
+  <img src="https://raw.githubusercontent.com/starexxx/Kurayami/c98649fbb89c2e00cb8532d8c45c4b5abeed7cb6/Icon/main.png" width="220" style="border-radius:30%;border:3px solid #2d2d2d">
+  <h2 align="center">Kurayami Miryoku</h2>
+  <p align="center">Simple Element Inspector for Mobile Browser</p>
 </p>
 
 ## Features
@@ -11,7 +11,7 @@
 - **Interactive Console**: Execute JavaScript in page context
 - **Mobile Optimized**: Works smoothly on touch devices
 
-## Quick Install
+## Installation
 Add this to your webpage:
 ```html
 <script src="https://cdn.jsdelivr.net/gh/starexxx/Kurayami@main/application.js"></script>
@@ -35,8 +35,12 @@ javascript:(function(){var s=document.createElement('script');s.src='https://cdn
    - View color-coded output below
 
 ## Compatibility
-✔ Chrome, Firefox, Safari, Edge  
-✔ iOS & Android  
-✔ 15KB lightweight
+- Chrome, Firefox, Safari, Edge
+- iOS & Android
+- Extreme Lightweight
 
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+<p align="center">
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License">
+  </a>
+</p>
