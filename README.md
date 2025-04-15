@@ -29,7 +29,7 @@ A powerful debugging tool that provides real-time page inspection capabilities w
 ```
 ```js
 // ==UserScript==
-// @name         Starexx
+// @name         Kurayami Miryoku
 // @version      1.3
 // @description  Simple Page Inspector!
 // @author       Starexx
@@ -63,10 +63,6 @@ A powerful debugging tool that provides real-time page inspection capabilities w
 - Modern browsers (Chrome, Firefox, Safari, Edge)
 - Mobile-friendly (tested on iOS/Android)
 - Lightweight (~15KB minified)
-
-## Author
-
-**Starexx**  - [GitHub Profile](https://github.com/starexxx)
-
+- 
 ## License
 [MIT License](LICENSE)- Free for personal and commercial use
