@@ -5,13 +5,13 @@
   <p align="center">Simple Element Inspector for Mobile Browser</p>
 </p>
 
-## Features
+### Features
 - **Page Inspection**: View HTML source with syntax highlighting
 - **Resource Analysis**: List all external scripts, styles, and images
 - **Interactive Console**: Execute JavaScript in page context
 - **Mobile Optimized**: Works smoothly on touch devices
 
-## Installation
+### Installation
 Add this to your webpage:
 ```html
 <script src="https://cdn.jsdelivr.net/gh/starexxx/Kurayami@main/application.js"></script>
@@ -22,7 +22,7 @@ Or use as bookmarklet:
 javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/starexxx/Kurayami@main/application.js';document.body.appendChild(s);})();
 ```
 
-## How to Use
+### How to Use
 1. Click the floating button (bottom-right corner)
 2. Navigate between tabs:
    - **Info**: Page metadata
@@ -34,7 +34,7 @@ javascript:(function(){var s=document.createElement('script');s.src='https://cdn
    - Press "Execute" to run
    - View color-coded output below
 
-## Compatibility
+### Compatibility
 - Chrome, Firefox, Safari, Edge
 - iOS & Android
 - Extreme Lightweight
