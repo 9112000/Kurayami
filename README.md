@@ -8,12 +8,12 @@ Features include page inspection with clean HTML source viewing and syntax highl
 ### Installation
 Add this to your webpage:
 ```html
-<script src="https://cdn.jsdelivr.net/gh/starexxx/Kurayami@main/start.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/starexxx/Kurayami/start.js"></script>
 ```
 
 Or use as bookmarklet:
 ```javascript
-javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/starexxx/Kurayami@main/start.js';document.body.appendChild(s);})();
+javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/starexxx/Kurayami/start.js';document.body.appendChild(s);})();
 ```
 
 ### How to Use
