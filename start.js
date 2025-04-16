@@ -119,7 +119,7 @@
                     font-size: 14px;
                     font-weight: bold;
                     background: #111;
-                    border-bottom: none;
+                    border: none;
                     color: #fff;
                     font-family: 'Inter', sans-serif;
                 `;
@@ -169,6 +169,7 @@
                     font-size: 11px;
                     background: #1a1a1a;
                     position: relative;
+                    border: none;
                     font-family: 'Inter', monospace;
                 `;
 
@@ -262,6 +263,7 @@
                     background:#111;
                     padding:8px;
                     border-radius:0px;
+                    border: none;
                     font-family:'Inter', monospace;
                     max-height:200px;
                     overflow-y:auto;
