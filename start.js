@@ -99,6 +99,7 @@
                     left: 0;
                     width: 100%;
                     height: 50%;
+                    border: none;
                     background: #1a1a1a;
                     color: white;
                     z-index: 9999;
