@@ -54,7 +54,7 @@
         offsetX = event.clientX - btn.getBoundingClientRect().left;
         offsetY = event.clientY - btn.getBoundingClientRect().top;
         btn.style.transition = "none";
-        btn.style.opacity = "1";
+        btn.style.opacity = "0.9";
     }
 
     function dragMove(e) {
@@ -68,7 +68,7 @@
     function stopDrag() {
         isDragging = false;
         btn.style.transition = "opacity 0.2s ease";
-        btn.style.opacity = "0.7";
+        btn.style.opacity = "0.3";
     }
 
     btn.addEventListener("mousedown", startDrag);
