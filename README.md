@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/starexxx/Kurayami/c98649fbb89c2e00cb8532d8c45c4b5abeed7cb6/Icon/main.png" width="220" style="border-radius:30%;border:3px solid #2d2d2d">
+  <img src="https://raw.githubusercontent.com/starexxx/Kurayami/f5dca5/Icon/main.png" width="220" style="border-radius:30%;border:3px solid #2d2d2d">
 </p>
 <p align="center"><b>暗闇魅力</b></p>
 
